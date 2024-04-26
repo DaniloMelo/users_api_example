@@ -1,15 +1,14 @@
 import pool from "./connection.js";
 
-export async function execQuery(query = "", values = null) {
+export default async function execQuery(query = "", values = null) {
   try {
     if (values === null) {
-      const results = await pool.query(query)
-      return results
+      return await pool.query(query)
     } else {
-      const results = await pool.query(query, [...values])
-      return results
+      return await pool.query(query, [...values])
     }
   } catch (error) {
+    // console.error(`Error executing query: ${query}. Error: ${error.message}`)
     throw error
   }
 }
