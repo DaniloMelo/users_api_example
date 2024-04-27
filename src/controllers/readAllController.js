@@ -8,16 +8,16 @@ export default async function readAllController(request, response) {
       return response.status(404).json({ error: "No users was found." })
     }
 
-    const jsonResponseData = {
-      error: null,
-      results: data.map(user => ({
-        id: user.id,
-        userName: user.userName,
-        userEmail: user.userEmail
-      }))
-    }
+    // const jsonResponseData = {
+    //   error: null,
+    //   results: data.map(user => ({
+    //     id: user.id,
+    //     userName: user.userName,
+    //     userEmail: user.userEmail
+    //   }))
+    // }
 
-    return response.json(jsonResponseData)
+    return response.status(200).json(data)
   } catch (error) {
     // console.error(`Error in readAll controller: ${error.message}`)
     console.error(error)
