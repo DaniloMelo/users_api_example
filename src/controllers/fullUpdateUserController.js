@@ -13,9 +13,7 @@ export default async function fullUpdateUserController(request, response) {
       return response.status(400).json({ error: "User ID not provided or invalid" })
     }
 
-    const data = await fullUpdateUserService(userName, userEmail, id)
-
-    console.log(data);
+    await fullUpdateUserService(userName, userEmail, id)
 
     const jsonData = {
       id,
