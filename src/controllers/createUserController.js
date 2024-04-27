@@ -8,9 +8,7 @@ export default async function createUserController(request, response) {
       return response.status(400).json({ error: "User or Email not provided." })
     }
 
-    const data = await createUserService(userName, userEmail)
-
-    console.log(data);
+    const [data] = await createUserService(userName, userEmail)
 
     const jsonResponseData = {
       id: data.insertId,
