@@ -5,6 +5,7 @@ export default async function readAllUsersService() {
     const query = "SELECT * FROM users"
     const data = await execQuery(query)
     return data
+
   } catch (error) {
     throw error
   }

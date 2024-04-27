@@ -9,8 +9,9 @@ export default async function readAllUsersController(request, response) {
     }
 
     return response.status(200).json(data)
+
   } catch (error) {
-    console.error(`Error when feching all users. ${error}`)
+    console.error(`Error when feching all users: ${error}`)
     return response.status(500).json({ error: error.message || "Internal Server Error" })
   }
 }
