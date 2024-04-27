@@ -10,6 +10,7 @@ export default async function readByIdController(request, response) {
 
     const data = await readByIdService(id)
 
+
     // const jsonResponseData = {
     //   error: null,
     //   results: {

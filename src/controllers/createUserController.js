@@ -10,11 +10,12 @@ export default async function createUserController(request, response) {
 
     const data = await createUserService(userName, userEmail)
 
+    console.log(data);
 
     const jsonResponseData = {
-      id: data.id,
-      userName: data.userName,
-      userEmail: data.userEmail
+      id: data.insertId,
+      userName,
+      userEmail
     }
 
     return response.status(201).json(jsonResponseData)

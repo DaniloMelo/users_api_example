@@ -7,6 +7,7 @@ export default async function readAllController(request, response) {
     if (!data || data.length === 0) {
       return response.status(404).json({ error: "No users was found." })
     }
+    console.log(data)
 
     // const jsonResponseData = {
     //   error: null,
