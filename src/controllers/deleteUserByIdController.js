@@ -11,10 +11,10 @@ export default async function deleteUserById(request, response) {
 
     await deleteUserByIdService(id)
 
-    response.status(200).json({ message: "User Deleted Successfully" })
+    response.status(200).json({ message: "User Deleted Successfully." })
 
   } catch (error) {
-    console.error(`Error on deleting user: ${error.message}`)
+    console.error(`Error on deleting user: ${error}`)
     response.status(500).json({ error: error.message || "Internal Server Error." })
   }
 }

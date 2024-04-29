@@ -5,12 +5,16 @@ export default async function readUserByIdController(request, response) {
     const { id } = request.params
 
     if (!id || isNaN(id)) {
-      return response.status(404).json({ error: "User ID not provided or invalid." })
+      response.status(404).json({ error: "User ID not provided or invalid." })
+      throw new Error("User ID not provided or invalid.")
     }
 
-    const [data] = await readUserByIdService(id)
+    const [result] = await readUserByIdService(id)
 
-    return response.status(200).json(data)
+    return response.status(200).json({
+      message: "User search completed successfully.",
+      data: result
+    })
 
   } catch (error) {
     console.error(`Error when fetching an user by ID: ${error}`)
