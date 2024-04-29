@@ -17,6 +17,6 @@ export default async function deleteUserById(request, response) {
 
   } catch (error) {
     console.error(`Error on deleting user: ${error}`)
-    response.status(500).json({ error: error.message || "Internal Server Error." })
+    return response.status(500).json({ error: error.message || "Internal Server Error." })
   }
 }

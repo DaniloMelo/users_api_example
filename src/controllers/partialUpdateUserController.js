@@ -25,6 +25,6 @@ export default async function partialUpdateUserController(request, response) {
 
   } catch (error) {
     console.error(`Error on partial update user: ${error}`)
-    response.status(500).json({ error: error.message || "Internal Server Error." })
+    return response.status(500).json({ error: error.message || "Internal Server Error." })
   }
 }
