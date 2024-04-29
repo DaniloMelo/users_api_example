@@ -11,6 +11,10 @@ export default async function readUserByIdController(request, response) {
 
     const [result] = await readUserByIdService(id)
 
+    if (result.length === 0 || result === null || result === undefined) {
+      return response.status(404).json({ error: "User not found" })
+    }
+
     return response.status(200).json({
       message: "User search completed successfully.",
       data: result
