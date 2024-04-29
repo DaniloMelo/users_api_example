@@ -1,3 +1,4 @@
+import readUserByIdService from "../services/readUserByIdService.js"
 import fullUpdateUserService from "../services/fullUpdateUserService.js"
 
 export default async function fullUpdateUserController(request, response) {
@@ -6,12 +7,13 @@ export default async function fullUpdateUserController(request, response) {
     const { id } = request.params
 
     if (!userName || !userEmail) {
-      response.status(400).json({ error: "User name or email not provided." })
-      throw new Error("User name or Email not provided.")
+      return response.status(400).json({ error: "User name or email not provided." })
     }
 
-    if (!id || isNaN(id)) {
-      return response.status(400).json({ error: "User ID not provided or invalid." })
+    const [result] = await readUserByIdService(id)
+
+    if (result.length === 0 || result === null || result === undefined) {
+      return response.status(404).json({ error: "User not found." })
     }
 
     await fullUpdateUserService(userName, userEmail, id)
