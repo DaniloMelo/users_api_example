@@ -5,8 +5,7 @@ export default async function createUserController(request, response) {
     const { userName, userEmail } = request.body
 
     if (!userName || !userEmail) {
-      response.status(400).json({ error: "User name or Email not provided." })
-      throw new Error("User name or Email not provided.")
+      return response.status(400).json({ error: "User name or Email not provided." })
     }
 
     const [result] = await createUserService(userName, userEmail)

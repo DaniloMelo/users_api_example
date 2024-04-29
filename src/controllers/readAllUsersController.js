@@ -5,8 +5,7 @@ export default async function readAllUsersController(request, response) {
     const [result] = await readAllUsersService()
 
     if (!result || result.length === 0) {
-      response.status(404).json({ error: "No users was found." })
-      throw new Error("No users was found.")
+      return response.status(404).json({ error: "No users was found." })
     }
 
     return response.status(200).json({

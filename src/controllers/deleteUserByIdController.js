@@ -1,12 +1,14 @@
 import deleteUserByIdService from "../services/deleteUserByIdService.js"
+import readUserByIdService from "../services/readUserByIdService.js"
 
 export default async function deleteUserById(request, response) {
   try {
     const { id } = request.params
 
-    if (!id || isNaN(id)) {
-      response.status(404).json({ error: "User ID not valid or not provided." })
-      throw new Error("User ID not valid or not provided.")
+    const [result] = await readUserByIdService(id)
+
+    if (result.length === 0 || result === null || result === undefined) {
+      return response.status(404).json({ error: "User not found." })
     }
 
     await deleteUserByIdService(id)
